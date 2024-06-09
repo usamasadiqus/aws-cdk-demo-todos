@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "4797b8fc-e989-4402-8712-195be6e49c9f",
+		"name": "Learning AWS CDK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17279234"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://3a89hn0ps6.execute-api.ap-southeast-2.amazonaws.com/prod/users",
+							"protocol": "https",
+							"host": [
+								"3a89hn0ps6",
+								"execute-api",
+								"ap-southeast-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"5\",\r\n    \"name\": \"Adil\",\r\n    \"username\": \"adil\",\r\n    \"email\": \"adil@gmail.com\",\r\n    \"phone\": \"+923444444444\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://3a89hn0ps6.execute-api.ap-southeast-2.amazonaws.com/prod/users",
+							"protocol": "https",
+							"host": [
+								"3a89hn0ps6",
+								"execute-api",
+								"ap-southeast-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
