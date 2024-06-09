@@ -13,6 +13,8 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
       partitionKey: { name: "id", type: AttributeType.STRING },
     });
 
+    console.log("usersTable: ", JSON.stringify(usersTable));
+
     // Lambda Functions
     const getAllUsers = new Function(this, "GetAllUsersLambdaHandler", {
       runtime: Runtime.NODEJS_18_X,
@@ -22,6 +24,8 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
         USERS_TABLE_NAME: usersTable.tableName,
       },
     });
+
+    console.log("getAllUsers: ", JSON.stringify(getAllUsers));
 
     usersTable.grantReadWriteData(getAllUsers);
 
