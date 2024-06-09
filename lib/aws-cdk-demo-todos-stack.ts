@@ -1,5 +1,5 @@
 import * as cdk from "aws-cdk-lib";
-import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
+import { Cors, LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import { AttributeType, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Code, Function, Runtime } from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
@@ -13,11 +13,9 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
       partitionKey: { name: "id", type: AttributeType.STRING },
     });
 
-    console.log("usersTable: ", usersTable);
-
     // Lambda Functions
     const getAllUsers = new Function(this, "GetAllUsersLambdaHandler", {
-      runtime: Runtime.NODEJS_18_X,
+      runtime: Runtime.NODEJS_16_X,
       code: Code.fromAsset("functions"),
       handler: "users.getAllUsersHandler",
       environment: {
@@ -25,12 +23,15 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
       },
     });
 
-    console.log("getAllUsers: ", getAllUsers);
-
     usersTable.grantReadWriteData(getAllUsers);
 
     // Create api gateway methods and path
-    const api = new RestApi(this, "user-apis");
+    const api = new RestApi(this, "user-apis", {
+      defaultCorsPreflightOptions: {
+        allowOrigins: Cors.ALL_ORIGINS,
+        allowMethods: Cors.ALL_METHODS,
+      },
+    });
 
     api.root
       .resourceForPath("users")
