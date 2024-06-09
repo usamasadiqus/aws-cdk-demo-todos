@@ -15,10 +15,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://3a89hn0ps6.execute-api.ap-southeast-2.amazonaws.com/prod/users",
+							"raw": "https://66oialtod7.execute-api.ap-southeast-2.amazonaws.com/prod/users",
 							"protocol": "https",
 							"host": [
-								"3a89hn0ps6",
+								"66oialtod7",
 								"execute-api",
 								"ap-southeast-2",
 								"amazonaws",
@@ -39,7 +39,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"5\",\r\n    \"name\": \"Adil\",\r\n    \"username\": \"adil\",\r\n    \"email\": \"adil@gmail.com\",\r\n    \"phone\": \"+923444444444\"\r\n}",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"name\": \"Usama Sadiq\",\r\n    \"username\": \"usama_sadiq\",\r\n    \"email\": \"usama_sadiq@gmail.com\",\r\n    \"phone\": \"+923003970500\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,10 +47,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://3a89hn0ps6.execute-api.ap-southeast-2.amazonaws.com/prod/users",
+							"raw": "https://66oialtod7.execute-api.ap-southeast-2.amazonaws.com/prod/users",
 							"protocol": "https",
 							"host": [
-								"3a89hn0ps6",
+								"66oialtod7",
 								"execute-api",
 								"ap-southeast-2",
 								"amazonaws",
@@ -59,6 +59,39 @@
 							"path": [
 								"prod",
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Adil\",\r\n    \"username\": \"adil\",\r\n    \"email\": \"adil@gmail.com\",\r\n    \"phone\": \"+923003030303\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://66oialtod7.execute-api.ap-southeast-2.amazonaws.com/prod/users/1",
+							"protocol": "https",
+							"host": [
+								"66oialtod7",
+								"execute-api",
+								"ap-southeast-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"users",
+								"1"
 							]
 						}
 					},
