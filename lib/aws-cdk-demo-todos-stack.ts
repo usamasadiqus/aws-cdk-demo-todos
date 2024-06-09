@@ -36,6 +36,17 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
 
     usersTable.grantReadWriteData(createUser);
 
+    const updateUser = new Function(this, "UpdateUserLambdaHandler", {
+      runtime: Runtime.NODEJS_16_X,
+      code: Code.fromAsset("functions"),
+      handler: "users.updateUserHandler",
+      environment: {
+        USERS_TABLE_NAME: usersTable.tableName,
+      },
+    });
+
+    usersTable.grantReadWriteData(updateUser);
+
     // Create api gateway methods and path
     const api = new RestApi(this, "user-apis");
 
@@ -46,6 +57,11 @@ export class AwsCdkDemoTodosStack extends cdk.Stack {
     api.root
       .resourceForPath("users")
       .addMethod("POST", new LambdaIntegration(createUser));
+
+    api.root
+      .resourceForPath("users")
+      .addResource("{id}")
+      .addMethod("PUT", new LambdaIntegration(updateUser));
 
     new cdk.CfnOutput(this, "APIURL", {
       value: api.url ?? "Something went wrong",
